@@ -21,7 +21,7 @@ If the MIDI track reaches either the note limit (~107) or time limit (256s, or 4
 
 The program prompts for how individual song parts are handled. If the offset is kept, the parts will be synced with the original MIDI file. If different players start playing all the different parts simultaneously, the song should continue from person to person seamlessly. If the offset is removed, each part will immediately start playing instead. Keeping the offset is better if playing in a coordinated group, or if editing/uploading shawzin footage. Removing the offset is better if playing for others in-game.
 
-The shawzin has a limited range (1-3 octaves). Notes that are too high or too low will loop around to the other end and play octaves instead. Adjust your MIDI file accordingly in your MIDI editor. The shawzin's first and lowest note (no frets, string 1) is treated as C5.
+The shawzin has a limited range (1-3 octaves). Notes that are too high or too low will loop around to the other end and play octaves instead. Adjust your MIDI file accordingly in your MIDI editor. The shawzin's first and lowest note (no frets, string 1) is treated as C4.
 
 # How to Use the Shawzin
 To use the Shawzin, you need to buy one from the Warframe in-game market (Menu > Market). Currently, they range from 40-60p.
