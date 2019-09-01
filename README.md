@@ -16,9 +16,14 @@ The program will ask you to enter a scale for the MIDI file. You can find a <a h
 ```
 (Ignored)	Note #1	 Note C#/Db4 at 0m3.015625s
 ```
+If the MIDI track reaches either the note limit (~107) or time limit (256s, or 4m16s), the track will be broken up into multiple lines, each seperately playable. Song parts broken up due to note limit will retain their timing; if different players start playing all the different parts simultaneously, the song should continue from person to person seamlessly.
+
+The shawzin has a limited range (1-2 octaves). Notes that are too high or too low will loop around to the other end and play octaves instead. Adjust your MIDI file accordingly in your MIDI editor.
+
+In theory, you can double the song length time limit by doubling the speed of the MIDI file and selecting "Slow Playback" in bottom right corner of the Shawzin song menu.
 
 # Using the Shawzin
-To use the Shawzin, you need to buy one from the Warframe market.
+To use the Shawzin, you need to buy one from the Warframe market. Currently, they range from 40-60p.
 
 <p align="center">
     <img src="https://i.imgur.com/Bxe3WwP.png" alt="Warframe market">
@@ -30,7 +35,7 @@ Next, you need to equip the Shawzin emote. (Menu > Arsenal > Emotes > Add Emotes
     <img src="https://i.imgur.com/eidLiAy.png" alt="Warframe market">
 </p>
 
-Use the Shawzin emote and open Songs > Load Song to Memory. Then, copy and paste the output from the output text file into the text box, then select "OK".
+Use the Shawzin emote and open Songs. If you like, you can enable Auto Play (bottom right.) Select Load Song to Memory, then copy and paste the output from the output .txt file into the text box, then select "OK".
 
 <p align="center">
     <img src="https://i.imgur.com/x7RPBIk.png" alt="Warframe market">
