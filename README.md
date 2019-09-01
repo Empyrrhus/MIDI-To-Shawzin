@@ -4,7 +4,7 @@ MIDI-to-Shawzin is a program that converts .mid files to text, which can be impo
 
 # Usage
 
-Download the executable, then drag a MIDI file on top of it.
+Download the executable, then drag a MIDI file on top of it. The output files will be in the same folder as the MIDI file.
 
 Alternatively, you can clone and run the program from command line:
 ```
