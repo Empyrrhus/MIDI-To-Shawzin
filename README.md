@@ -1,5 +1,6 @@
-# MIDI-To-Shawzin
-Converts MIDI files to text, importable by Warframe's Shawzin feature.
+# MIDI-to-Shawzin
+
+MIDI-to-Shawzin is a program that converts .mid files to text, importable by Warframe's Shawzin feature.
 
 # Usage
 
@@ -20,21 +21,19 @@ The program will ask you to enter a scale for the MIDI file. You can find a <a h
 To use the Shawzin, you need to buy one from the Warframe market.
 
 <p align="center">
-    <img src="https://imgur.com/a/J0gbnOg" alt="Warframe market">
+    <img src="https://i.imgur.com/Bxe3WwP.png" alt="Warframe market">
 </p>
 
 Next, you need to equip the Shawzin emote. (Menu > Arsenal > Emotes > Add Emotes Item > Shawzin)
 
 <p align="center">
-    <img src="https://imgur.com/a/OlIVIH0" alt="Warframe market">
+    <img src="https://i.imgur.com/eidLiAy.png" alt="Warframe market">
 </p>
 
 Use the Shawzin emote and open Songs > Load Song to Memory. Then, copy and paste the output from the output text file into the text box, then select "OK".
 
 <p align="center">
-    <img src="https://imgur.com/a/0x3X7oi" alt="Warframe market">
+    <img src="https://i.imgur.com/x7RPBIk.png" alt="Warframe market">
 </p>
-
-# 
 
 For more details on how the Shawzin input/output system works, see my notes <a href="https://www.reddit.com/r/Warframe/comments/cxbxoc/shawzin_song_recording_syntax/">here</a>.
