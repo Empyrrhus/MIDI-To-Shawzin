@@ -35,7 +35,7 @@ Next, you need to equip the Shawzin emote. (Menu > Arsenal > Emotes > Add Emotes
     <img src="https://i.imgur.com/eidLiAy.png" alt="Warframe market">
 </p>
 
-Use the Shawzin emote and open Songs. If you like, you can enable "Auto Play" at the bottom right. Select "Load Song to Memory", then copy and paste the output from the output .txt file into the text box, then select "OK".
+Use the Shawzin emote and open Songs. If you like, you can enable "Auto Play" at the bottom right. Select "Load Song To Memory", then copy and paste the output from the output .txt file into the text box, then select "OK".
 
 <p align="center">
     <img src="https://i.imgur.com/x7RPBIk.png" alt="Warframe market">
