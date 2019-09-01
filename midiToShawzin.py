@@ -10,7 +10,7 @@ from conversion import widthFinder
 from conversion import offsetNote
 
 maxNotes = 107
-maxLineWidth = 79.5 #varies between 79-80, alternates every line?
+maxLineWidth = 79.4 #varies between 79-80, alternates every line?
 maxLength = 256
 defaultTicksPerBeat = 480
 defaultTempo = 500000

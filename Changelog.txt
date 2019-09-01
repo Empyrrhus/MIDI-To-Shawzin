@@ -1,3 +1,6 @@
+V1.2.2
+* Fixed an edge case where song parts of exactly 79.5 width would not be accepted by the shawzin
+
 V1.2.1
 * Slightly increased MIDI compatibility
 
