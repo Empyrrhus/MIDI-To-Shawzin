@@ -593,3 +593,7 @@ def widthFinder(note):
 	for counter in range(0, len(note)):
 		totalWidth += letterWidthDict.get(note[counter], 0.0)
 	return totalWidth
+	
+def offsetNote(char, offset):
+	return(base64[base64.index(str(char)) - base64.index(str(offset))])
+	

@@ -1,3 +1,2 @@
 To do:
-* Add a "slow playback" mode
-* Add a "live" mode, resetting the timing for song parts
+* Nothing planned.

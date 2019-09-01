@@ -7,6 +7,7 @@ from conversion import ShawzinConversion
 from conversion import identifyNote
 from conversion import condenser
 from conversion import widthFinder
+from conversion import offsetNote
 
 maxNotes = 107
 maxLineWidth = 79.5 #varies between 79-80, alternates every line?
@@ -35,6 +36,31 @@ while True:
 	except:
 		pass
 	print("Please enter a valid number from 1-8.")
+	
+#other settings
+playbackSpeed = 1.0
+print("\nEnter a playback speed modifier.\n(1 is default, 2 is double speed, 0.5 is half speed, etc.)\n\nEnter Playback Speed:")
+while True:
+	playbackSpeed = input()
+	try:
+		playbackSpeed = float(playbackSpeed)
+		if(0 < playbackSpeed):
+			break
+	except:
+		pass
+	print("Please enter a valid positive number.")
+	
+removeOffset = 1
+print("\nDo you want to keep or remove song offsets?\n  MIDI:\n\t1\t2\t3\t4\n\tA\tB\tC\tD\n  1. Keep Offset\n\t1\t2\t3\t4\n\tA\tB\n\t\t\tC\tD\n  2. Remove Offset\n\t1\t2\t3\t4\n\tA\tB\n\tC\tD\n\nEnter option:")
+while True:
+	removeOffset = input()
+	try:
+		removeOffset = int(removeOffset)
+		if(0 < removeOffset and removeOffset <= 2):
+			break
+	except:
+		pass
+	print("Please enter a valid number from 1-2.")
 
 #MIDI file attributes
 ticksPerBeat = defaultTicksPerBeat
@@ -61,7 +87,7 @@ for i, track in enumerate(mid.tracks):
 			timeSignature = [int(s) for s in str(msg).replace("=", " ").split(" ") if s.isdigit()]
 			ticksPerBeat = timeSignature[2] * timeSignature[3]
 		if(str(msg).count("set_tempo")):
-			tempo = int(str(msg)[30:-8])
+			tempo = int(int(str(msg)[30:-8]) / playbackSpeed)
 		if(str(msg).count("time=")):
 			currentNote = [int(s) for s in str(msg).replace("=", " ").replace(">", " ").split(" ") if s.isdigit()]
 			outputNote = ShawzinConversion(scale, currentNote, secondsPast, ticksPerBeat, tempo)
@@ -77,7 +103,7 @@ for i, track in enumerate(mid.tracks):
 				f2.write("\t Note " + identifyNote(currentNote[1]) + str(int(currentNote[1]/12) - 1) + " at " + str(int((trueSecondsPast + 2*(outputNote[1]))/60)) + "m" + str((trueSecondsPast+ 2*(outputNote[1]))%60) + "s")
 				
 			#break up song to fit 256s limit
-			secondsPast += outputNote[1] #actually half of real value, so "slow playback" can be used to double song length
+			secondsPast += outputNote[1]
 			trueSecondsPast += 2*(outputNote[1])
 			if(secondsPast >= maxLength):
 				outputString.append("\n" + str(scale))
@@ -92,32 +118,80 @@ for i, track in enumerate(mid.tracks):
 		
 	#combine notes with shared frets
 	for counter in range(0, 3):
-		#print("Run " + str(counter))
 		outputString = condenser(outputString)
 		
 	#break up song to fit copy-paste limit
 		#10 lines, 79 units each; see letterWidthDict in conversion.py
 	notesWidth = 0.0 #current width of the line, cannot exceed 79
 	lineNumber = 1
+	finalOutputString = []
+	noSilenceString = []
+	
+	#variables for removing silence
+	timeOffset = 0
+	offsetFlag = 1
+			
+	#parse track song notes in shawzin format
 	for note in outputString:
-		#if note would overflow last line, make new song
-		if(lineNumber == 10 and (notesWidth + widthFinder(note)) > maxLineWidth):
+		#if note would overflow last line, make new song part
+		currentNoteWidth = 0
+		if(len(note) == 3 and removeOffset == 2):
+			currentNoteWidth = widthFinder(note[0] + offsetNote(note[1], timeOffset) + note[2])
+		else:
+			currentNoteWidth = widthFinder(note)
+		if(lineNumber == 10 and (notesWidth + currentNoteWidth) > maxLineWidth):
 			lineNumber = 1
 			notesWidth = widthFinder(str(scale))
-			f.write("\n" + str(scale))
+			finalOutputString.append("\n" + str(scale))
+			offsetFlag = 1
+
+		#for removing silence at beginning of track
+		if(len(note) == 3 and offsetFlag and removeOffset == 2):
+			timeOffset = note[1]
+			offsetFlag = 0
+			
 		#check if each character would overflow each line
 		for character in range(0, len(note)):
-			notesWidth += widthFinder(note[character])
-			if(notesWidth > maxLineWidth or note.count("\n")):
-				notesWidth = 0.0
-				if(lineNumber == 10):
-					lineNumber = 0
-					f.write("\n" + str(scale))
-					notesWidth += widthFinder(str(scale))
+			if(character == 1 and removeOffset == 2):
+				notesWidth += widthFinder(offsetNote(note[character], timeOffset))
+			else:
 				notesWidth += widthFinder(note[character])
+				
+			#keep track and reset line width when next line is reached
+			if(notesWidth > maxLineWidth or (note.count("\n") and removeOffset != 2)):
+				notesWidth = 0.0 #reset current line width used
+				
+				#create a new song part if current part has hit the limit
+				if(lineNumber == 10 or (note.count("\n") and removeOffset != 2)):
+					lineNumber = 0
+					notesWidth += widthFinder(str(scale))
+					if(lineNumber == 10):
+						finalOutputString.append("\n" + str(scale))
+						if(removeOffset == 2):
+							timeOffset = note[1]
+					if(note.count("\n") and removeOffset == 2):
+						offsetFlag = 1	
+					
+				#re-add character width since we reset
+				if(character == 1 and removeOffset == 2):
+					notesWidth += widthFinder(offsetNote(note[character], timeOffset))
+				else:
+					notesWidth += widthFinder(note[character])
 				lineNumber += 1
-			f.write(note[character])
+			#add to output
+			if(character == 1 and removeOffset == 2):
+				finalOutputString.append(offsetNote(note[character], timeOffset))
+			elif(note.count("\n") and removeOffset == 2):
+				pass
+			else:
+				finalOutputString.append(note[character])
+			
+	#output to file
+	for note in finalOutputString:
+		f.write(note)
 	f.close()
 	f2.close()
+
+#exit
 print("\nDone. Press enter to exit.")
 input()
