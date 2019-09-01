@@ -23,7 +23,7 @@ if(len(sys.argv) == 1):
 mid = MidiFile(sys.argv[1])
 
 #get song scale from user
-print("\nEnter the song's musical scale.\nYou can use a tool such as scales-chords.com/scalefinder.php.\nIf in doubt, use Chromatic.\n")
+print("\nEnter the song's musical scale.\nYou can use a tool such as scales-chords.com/scalefinder.php.\nIf you have problems getting your MIDI into scale, use Chromatic.\n")
 print("Scales:\n  1. Pentatonic Minor\n  2. Pentatonic Major\n  3. Chromatic\n  4. Hexatonic\n  5. Major\n  6. Minor\n  7. Hirajoshi\n  8. Phrygian\n\nEnter Scale:")
 scale = 0
 while True:
@@ -49,7 +49,7 @@ for i, track in enumerate(mid.tracks):
 	trueSecondsPast = 0
 	
 	#create text file
-	trackName = 'Track {} - {}'.format(i + 1, track.name)
+	trackName = sys.argv[1] + ' - Track {} - {}'.format(i + 1, track.name)
 	f = open(trackName + ".txt", "w")
 	f2 = open(trackName + " - DEBUG.txt", "w")
 	outputString.append(str(scale))

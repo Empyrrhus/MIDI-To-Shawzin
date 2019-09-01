@@ -271,7 +271,7 @@ def noteConversion(scale, noteNumber):
 	return scaleDict[scale][noteNumber%scaleModulo[scale - 1]]
 
 def timeConversion(seconds):
-	return(base64[int(seconds/secondsPerMeasure)] + base64[int((seconds%4)/secondsPerTick)])
+	return(base64[int(seconds/secondsPerMeasure)%64] + base64[int((seconds%4)/secondsPerTick)%64])
 	
 #60 = C, +1 = +half step, -1 = -half step
 noteDict = {
@@ -515,7 +515,7 @@ def condenser(outputString):
 		if(outputString[counter] != "AAA"):
 			newOutputString.append(outputString[counter])
 	if(outputString[len(outputString) - 1] != "AAA"):
-			newOutputString.append(outputString[counter])
+			newOutputString.append(outputString[len(outputString) - 1])
 	return(newOutputString)
 	
 #One line can a max of 78 units

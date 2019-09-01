@@ -1,0 +1,8 @@
+V1.1
+	*Fixed an incorrect reference
+	*Fixed bug where really high or really low note would cause a crash
+	*Minor text fixes/rework
+	*Output text file filename now includes the MIDI's filename
+	
+V1.0
+	*Initial release
