@@ -1,6 +1,6 @@
 # MIDI-to-Shawzin
 
-MIDI-to-Shawzin is a program that converts .mid files to text, importable by Warframe's Shawzin feature.
+MIDI-to-Shawzin is a program that converts .mid files to text, which can be imported into  Warframe's Shawzin feature.
 
 # Usage
 
