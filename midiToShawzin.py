@@ -84,10 +84,11 @@ for i, track in enumerate(mid.tracks):
 	for msg in track:
 		f2.write("\t" + str(msg))
 		if(str(msg).count("time_signature")):
-			timeSignature = [int(s) for s in str(msg).replace("=", " ").split(" ") if s.isdigit()]
-			ticksPerBeat = timeSignature[2] * timeSignature[3]
+			timeSignature = [str(s) for s in str(msg).replace("=", " ").split(" ")]
+			ticksPerBeat = int(timeSignature[timeSignature.index("clocks_per_click") + 1]) * int(timeSignature[timeSignature.index("notated_32nd_notes_per_beat") + 1])
 		if(str(msg).count("set_tempo")):
-			tempo = int(int(str(msg)[30:-8]) / playbackSpeed)
+			tempoMessage = [str(s) for s in str(msg).replace("=", " ").split(" ")]
+			tempo = int(int(tempoMessage[tempoMessage.index("tempo") + 1]) / playbackSpeed)
 		if(str(msg).count("time=")):
 			currentNote = [int(s) for s in str(msg).replace("=", " ").replace(">", " ").split(" ") if s.isdigit()]
 			outputNote = ShawzinConversion(scale, currentNote, secondsPast, ticksPerBeat, tempo)
