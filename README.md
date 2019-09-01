@@ -23,7 +23,7 @@ The shawzin has a limited range (1-3 octaves). Notes that are too high or too lo
 In theory, you can double the song length time limit by doubling the speed of the MIDI file and selecting "Slow Playback" in bottom right corner of the Shawzin song menu.
 
 # Using the Shawzin
-To use the Shawzin, you need to buy one from the Warframe market. Currently, they range from 40-60p.
+To use the Shawzin, you need to buy one from the Warframe in-game market (Menu > Market). Currently, they range from 40-60p.
 
 <p align="center">
     <img src="https://i.imgur.com/Bxe3WwP.png" alt="Warframe market">
