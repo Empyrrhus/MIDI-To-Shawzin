@@ -6,13 +6,13 @@ MIDI-to-Shawzin is a program that converts .mid files to text, importable by War
 
 Download the executable, then drag a MIDI file on top of it.
 
-Alternatively, you can run the program from command line:
+Alternatively, you can clone and run the program from command line:
 ```
 >pip install -r requirements.txt
 >python midiToShawzin [MIDI file]
 ```
 
-The program will ask you to enter a scale for the MIDI file. You can find a <a href="https://www.scales-chords.com/scalefinder.php">scale finder</a> online if needed. The program will then output a .txt file for every instrument track in the MIDI file. If any of the notes in the MIDI are out of scale, you can check the appropriate "DEBUG" text file. These notes will be marked with "(Ignored)", and will not be converted.
+The program will ask you to enter a scale for the MIDI file. You can find a <a href="https://www.scales-chords.com/scalefinder.php">scale finder</a> online if needed. For details on how the Shawzin input/output system works, see my notes <a href="https://www.reddit.com/r/Warframe/comments/cxbxoc/shawzin_song_recording_syntax/">here</a>. The program will then output a .txt file for every instrument track in the MIDI file. If any of the notes in the MIDI are out of scale, you can check the appropriate "DEBUG" text file. These notes will be marked with "(Ignored)", and will not be converted.
 ```
 (Ignored)	Note #1	 Note C#/Db4 at 0m3.015625s
 ```
@@ -35,5 +35,3 @@ Use the Shawzin emote and open Songs > Load Song to Memory. Then, copy and paste
 <p align="center">
     <img src="https://i.imgur.com/x7RPBIk.png" alt="Warframe market">
 </p>
-
-For more details on how the Shawzin input/output system works, see my notes <a href="https://www.reddit.com/r/Warframe/comments/cxbxoc/shawzin_song_recording_syntax/">here</a>.
