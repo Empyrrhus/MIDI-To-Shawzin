@@ -1,5 +1,5 @@
 V1.2.1
-* Slightly increased MIDI compatability
+* Slightly increased MIDI compatibility
 
 V1.2
 * Added option to adjust playback speed
