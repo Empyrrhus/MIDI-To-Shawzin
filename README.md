@@ -18,7 +18,7 @@ The program will ask you to enter a scale for the MIDI file. You can find a <a h
 ```
 If the MIDI track reaches either the note limit (~107) or time limit (256s, or 4m16s), the track will be broken up into multiple lines, each seperately playable. Song parts broken up due to note limit will retain their timing; if different players start playing all the different parts simultaneously, the song should continue from person to person seamlessly.
 
-The shawzin has a limited range (1-2 octaves). Notes that are too high or too low will loop around to the other end and play octaves instead. Adjust your MIDI file accordingly in your MIDI editor.
+The shawzin has a limited range (1-3 octaves). Notes that are too high or too low will loop around to the other end and play octaves instead. Adjust your MIDI file accordingly in your MIDI editor.
 
 In theory, you can double the song length time limit by doubling the speed of the MIDI file and selecting "Slow Playback" in bottom right corner of the Shawzin song menu.
 
