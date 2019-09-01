@@ -1,3 +1,6 @@
+V1.2.1
+* Slightly increased MIDI compatability
+
 V1.2
 * Added option to adjust playback speed
 * Added option to remove song part offsets
