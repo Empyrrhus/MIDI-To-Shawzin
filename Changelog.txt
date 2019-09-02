@@ -1,3 +1,6 @@
+V1.2.3
+* Fixed a possible unicode encoding error derived from MIDI data
+
 V1.2.2
 * Fixed an edge case where song parts of exactly 79.5 width would not be accepted by the shawzin
 

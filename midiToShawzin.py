@@ -82,7 +82,10 @@ for i, track in enumerate(mid.tracks):
 	
 	#parse MIDI
 	for msg in track:
-		f2.write("\t" + str(msg))
+		try:
+			f2.write("\t" + str(msg))
+		except:
+			pass #prevent UnicodeEncodeError in rare cases
 		if(str(msg).count("time_signature")):
 			timeSignature = [str(s) for s in str(msg).replace("=", " ").split(" ")]
 			ticksPerBeat = int(timeSignature[timeSignature.index("clocks_per_click") + 1]) * int(timeSignature[timeSignature.index("notated_32nd_notes_per_beat") + 1])
