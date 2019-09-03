@@ -17,9 +17,7 @@ The program will ask you to enter a scale for the MIDI file. You can find a <a h
 ```
 The program will also prompt for a playback speed. You can extend the length limit of a song by increasing the playback speed and selecting "Slow Playback" on the shawzin song menu.
 
-If the MIDI track reaches either the note limit (~107) or time limit (256s, or 4m16s), the track will be broken up into multiple lines, each seperately playable.
-
-The program prompts for how individual song parts are handled. If the offset is kept, the parts will be synced with the original MIDI file. If different players start playing all the different parts simultaneously, the song should continue from person to person seamlessly. If the offset is removed, each part will immediately start playing instead. Keeping the offset is better if playing in a coordinated group, or if editing/uploading shawzin footage. Removing the offset is better if playing for others in-game.
+If the MIDI track reaches either the note limit (1666) or time limit (256s, or 4m16s), the track will be broken up into multiple lines, each separately importable.
 
 The shawzin has a limited range (1-3 octaves). Notes that are too high or too low will loop around to the other end and play octaves instead. Adjust your MIDI file accordingly in your MIDI editor. **The shawzin's first and lowest note (no frets, string 1) is treated as C5**.
 
@@ -41,3 +39,12 @@ Use the Shawzin emote and open Songs. If you like, you can enable "Auto Play" at
 <p align="center">
     <img src="https://i.imgur.com/x7RPBIk.png" alt="Warframe market">
 </p>
+
+# Additional Details
+Most shawzins emulate the sound of a shamisen, while the Nelumbo shawzin has the sound of an acoustic guitar. Normal shawzins have a strong, striking sound, but when many notes are played simultaneously or in rapid succession, the notes' reverb can end up increasing into an undesirable droning sound. The quieter Nelumbo does not have this problem. Compare <a href="https://www.youtube.com/watch?v=e8aWlp_e81w">this</a> to <a href="https://www.youtube.com/watch?v=xvvfW5P7sRw">this</a>.
+
+Warframe occasionally has a bug, typically after a long enough gameplay session, where pasting from clipboard does not work. Changing your display mode (Menu > Options > Graphics > Display Mode) then changing it back fixes this.
+
+There is also a bug where the shawzin no longer emits audio after staying in the emote for an extended period of time. Simply exit then re-enter the emote to fix this.
+
+If your song is over 1666 notes but under 4m16s, and you wish to keep the missing time in subsequent parts as silence rather than having it be removed, you should use "-keepOffset" as a command line argument.
