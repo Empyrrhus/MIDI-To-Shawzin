@@ -1,3 +1,7 @@
+V1.3
+* Updated with Warframe U25.7.3's new 5000 imported character limit, allowing for 1666-note songs.
+* Offsets are now removed automatically, as the new note limit makes keeping them (mostly) obsolete. Use -keepOffset as a command line argument if you wish to keep them.
+
 V1.2.3
 * Fixed a possible unicode encoding error derived from MIDI data
 
