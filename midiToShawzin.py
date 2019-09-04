@@ -71,7 +71,7 @@ for i, track in enumerate(mid.tracks):
 	offset = 0
 	
 	#create text file
-	trackName = scrubName(sys.argv[1] + ' - Track {} - {}'.format(i + 1, track.name))
+	trackName = sys.argv[1] + ' - Track {} - {}'.format(i + 1, scrubName(track.name))
 	f = open(trackName + ".txt", "w")
 	f2 = open(trackName + " - DEBUG.txt", "w")
 	outputString.append(str(scale))
