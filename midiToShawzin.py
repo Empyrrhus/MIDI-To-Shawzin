@@ -7,6 +7,7 @@ from conversion import ShawzinConversion
 from conversion import identifyNote
 from conversion import condenser
 from conversion import offsetNote
+from conversion import scrubName
 
 maxNotes = 1666
 maxLength = 256
@@ -70,7 +71,7 @@ for i, track in enumerate(mid.tracks):
 	offset = 0
 	
 	#create text file
-	trackName = sys.argv[1] + ' - Track {} - {}'.format(i + 1, track.name)
+	trackName = scrubName(sys.argv[1] + ' - Track {} - {}'.format(i + 1, track.name))
 	f = open(trackName + ".txt", "w")
 	f2 = open(trackName + " - DEBUG.txt", "w")
 	outputString.append(str(scale))

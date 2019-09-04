@@ -1,3 +1,6 @@
+V1.3.1
+* Scrubbed illegal filename characters when making files from track names
+
 V1.3
 * Updated with Warframe U25.7.3's new 5000 imported character limit, allowing for 1666-note songs.
 * Offsets are now removed automatically, as the new note limit makes keeping them (mostly) obsolete. Use -keepOffset as a command line argument if you wish to keep them.

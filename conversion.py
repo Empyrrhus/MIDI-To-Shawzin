@@ -503,6 +503,7 @@ chordDict = {
 	("5", "+"):"/"
 }
 
+#combines notes with shared frets
 def condenser(outputString):
 	newOutputString = []
 	for counter in range(0, len(outputString) - 1):
@@ -517,7 +518,16 @@ def condenser(outputString):
 	if(outputString[len(outputString) - 1] != "AAA"):
 			newOutputString.append(outputString[len(outputString) - 1])
 	return(newOutputString)
-	
+
+#resets the timing of new song parts
 def offsetNote(note, offset):
 	return(note[0] + base64[base64.index(str(note[1])) - base64.index(str(offset))] + note[2])
 	
+#filenames cannot contain these characters
+illegalCharacters = ["\\", "/", ":", "*", "?", "\"", "<", ">", "|"]
+def scrubName(name):
+	outputName = ""
+	for current in range(0, len(name)):
+		if(illegalCharacters.count(name[current]) == 0):
+			outputName = outputName + name[current]
+	return outputName
