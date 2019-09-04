@@ -1,5 +1,5 @@
 V1.3.1
-* Scrubbed illegal filename characters when making files from track names
+* Sanitized illegal filename characters when making files from track names
 
 V1.3
 * Updated with Warframe U25.7.3's new 5000 imported character limit, allowing for 1666-note songs.
