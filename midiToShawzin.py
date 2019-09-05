@@ -82,6 +82,8 @@ for i, track in enumerate(mid.tracks):
 			f2.write("\t" + str(msg))
 		except:
 			pass #prevent UnicodeEncodeError in rare cases
+
+		#parse MIDI parameters
 		if(str(msg).count("time_signature")):
 			timeSignature = [str(s) for s in str(msg).replace("=", " ").split(" ")]
 			ticksPerBeat = int(timeSignature[timeSignature.index("clocks_per_click") + 1]) * int(timeSignature[timeSignature.index("notated_32nd_notes_per_beat") + 1])
@@ -97,8 +99,11 @@ for i, track in enumerate(mid.tracks):
 					secondsPast = 0
 				offset = outputNote[0][1]
 
+			#parse MIDI message
 			currentNote = [int(s) for s in str(msg).replace("=", " ").replace(">", " ").split(" ") if s.isdigit()]
 			outputNote = ShawzinConversion(scale, currentNote, secondsPast, ticksPerBeat, tempo)
+			
+			#parse notes
 			if(str(msg).count("note_on")):
 				f2.write("\n")
 				if(outputNote[0][0] is not "A"):
@@ -110,7 +115,8 @@ for i, track in enumerate(mid.tracks):
 					f2.write("(Ignored)\t" + "Note #" + str(trueNotesPast + 1))
 					notesIgnored += 1
 				f2.write("\t Note " + identifyNote(currentNote[1]) + str(int(currentNote[1]/12) - 1) + " at " + str(int((trueSecondsPast + 2*(outputNote[1]))/60)) + "m" + str((trueSecondsPast+ 2*(outputNote[1]))%60) + "s")
-				
+			
+			#keep track of progress
 			secondsPast += outputNote[1]
 			trueSecondsPast += 2*(outputNote[1])
 		f2.write("\n")	
