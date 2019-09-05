@@ -1,3 +1,6 @@
+V1.3.2
+* Fixed extraneous scale number marking start of empty song part
+
 V1.3.1
 * Sanitized illegal filename characters when making files from track names
 

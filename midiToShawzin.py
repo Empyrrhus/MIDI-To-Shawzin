@@ -89,6 +89,14 @@ for i, track in enumerate(mid.tracks):
 			tempoMessage = [str(s) for s in str(msg).replace("=", " ").split(" ")]
 			tempo = int(int(tempoMessage[tempoMessage.index("tempo") + 1]) / playbackSpeed)
 		if(str(msg).count("time=")):
+			#break up song to fit 256s limit
+			if(notesPast >= maxNotes or secondsPast >= maxLength):
+				outputString.append("\n" + str(scale))
+				notesPast = 0
+				if(secondsPast >= maxLength or keepOffset == 0):
+					secondsPast = 0
+				offset = outputNote[0][1]
+
 			currentNote = [int(s) for s in str(msg).replace("=", " ").replace(">", " ").split(" ") if s.isdigit()]
 			outputNote = ShawzinConversion(scale, currentNote, secondsPast, ticksPerBeat, tempo)
 			if(str(msg).count("note_on")):
@@ -103,15 +111,8 @@ for i, track in enumerate(mid.tracks):
 					notesIgnored += 1
 				f2.write("\t Note " + identifyNote(currentNote[1]) + str(int(currentNote[1]/12) - 1) + " at " + str(int((trueSecondsPast + 2*(outputNote[1]))/60)) + "m" + str((trueSecondsPast+ 2*(outputNote[1]))%60) + "s")
 				
-			#break up song to fit 256s limit
 			secondsPast += outputNote[1]
 			trueSecondsPast += 2*(outputNote[1])
-			if(notesPast >= maxNotes or secondsPast >= maxLength):
-				outputString.append("\n" + str(scale))
-				notesPast = 0
-				if(secondsPast >= maxLength or keepOffset == 0):
-					secondsPast = 0
-				offset = outputNote[0][1]
 		f2.write("\n")	
 		
 	#print summary to console
