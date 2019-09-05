@@ -73,7 +73,11 @@ for i, track in enumerate(mid.tracks):
 	#create text file
 	trackName = sys.argv[1] + ' - Track {} - {}'.format(i + 1, scrubName(track.name))
 	f = open(trackName + ".txt", "w")
-	f2 = open("DEBUG - " + trackName + ".txt", "w")
+	f2 = ""
+	if(trackName.count('\\')):
+		f2 = open(trackName[:trackName.rfind('\\') + 1] + "DEBUG - " + trackName[trackName.rfind('\\') + 1:] + ".txt", "w")
+	else:
+		f2 = open("DEBUG - " + trackName + ".txt", "w")
 	outputString.append(str(scale))
 	
 	#parse MIDI
