@@ -1,3 +1,7 @@
+V1.3.3
+* Fixed new song part starting 1 note too late
+* Debug filenames now start with rather than end with "DEBUG"
+
 V1.3.2
 * Fixed extraneous empty song part
 

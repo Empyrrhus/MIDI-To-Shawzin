@@ -73,7 +73,7 @@ for i, track in enumerate(mid.tracks):
 	#create text file
 	trackName = sys.argv[1] + ' - Track {} - {}'.format(i + 1, scrubName(track.name))
 	f = open(trackName + ".txt", "w")
-	f2 = open(trackName + " - DEBUG.txt", "w")
+	f2 = open("DEBUG - " + trackName + ".txt", "w")
 	outputString.append(str(scale))
 	
 	#parse MIDI
@@ -92,7 +92,7 @@ for i, track in enumerate(mid.tracks):
 			tempo = int(int(tempoMessage[tempoMessage.index("tempo") + 1]) / playbackSpeed)
 		if(str(msg).count("time=")):
 			#break up song to fit 256s limit
-			if(notesPast >= maxNotes or secondsPast >= maxLength):
+			if(notesPast >= maxNotes - 1 or secondsPast >= maxLength - 1):
 				outputString.append("\n" + str(scale))
 				notesPast = 0
 				if(secondsPast >= maxLength or keepOffset == 0):
