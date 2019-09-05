@@ -19,7 +19,7 @@ The program will also prompt for a playback speed. You can extend the length lim
 
 If the MIDI track reaches either the note limit (1666) or time limit (256s, or 4m16s), the track will be broken up into multiple lines, each separately importable.
 
-The shawzin has a limited range (1-3 octaves). Notes that are too high or too low will loop around to the other end and play octaves instead. Adjust your MIDI file accordingly in your MIDI editor. **The shawzin's first and lowest note (no frets, string 1) is treated as C5**.
+The shawzin has a limited range (12 notes). Notes that are too high or too low will loop around to the other end and play octaves instead. Adjust your MIDI file accordingly in your MIDI editor. **The shawzin's first and lowest note (no frets, string 1) is treated as C5**.
 
 # How to Use the Shawzin
 To use the Shawzin, you need to buy one from the Warframe in-game market (Menu > Market). Currently, they range from 40-60p.
