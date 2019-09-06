@@ -41,6 +41,8 @@ Use the Shawzin emote and open Songs. If you like, you can enable "Auto Play" at
 </p>
 
 # Additional Details
+**The shawzin works best when playing only one or a few notes at a time; please edit your MIDI files to reflect this.**
+
 Most shawzins emulate the sound of a shamisen, while the Nelumbo shawzin has the sound of an acoustic guitar. Normal shawzins have a strong, striking sound, but when many notes are played simultaneously or in rapid succession, the notes' reverb can end up increasing into an undesirable droning sound. The quieter Nelumbo does not have this problem. Compare <a href="https://www.youtube.com/watch?v=e8aWlp_e81w">this</a> to <a href="https://www.youtube.com/watch?v=xvvfW5P7sRw">this</a>.
 
 Warframe occasionally has a bug, typically after a long enough gameplay session, where pasting from clipboard does not work. Changing your display mode (Menu > Options > Graphics > Display Mode) then changing it back fixes this.
