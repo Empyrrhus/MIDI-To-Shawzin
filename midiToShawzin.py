@@ -14,13 +14,23 @@ maxLength = 256
 defaultTicksPerBeat = 480
 defaultTempo = 500000
 
-#read midi file from command line
+#read midi file from command line or input
+midname = ""
+mid = ""
 if(len(sys.argv) == 1):
-	print("To convert a MIDI, drag the MIDI file onto this executable, or add a MIDI file as a command line argument.")
-	input()
-	sys.exit()
-	
-mid = MidiFile(sys.argv[1])
+	print("To convert a MIDI, drag the MIDI file onto this executable, add a MIDI file as a command line argument, or enter the MIDI filepath below.")
+	midname = input()
+	try:
+		mid = MidiFile(midname)
+	except FileNotFoundError:
+		sys.exit()
+else:
+	try:
+		midname = sys.argv[1]
+		mid = MidiFile(sys.argv[1])
+	except FileNotFoundError:
+		print("Please enter a valid MIDI file as an argument.")
+		sys.exit()
 
 #get song scale from user
 print("\nEnter the song's musical scale.\nYou can use a tool such as scales-chords.com/scalefinder.php.\nIf you have problems getting your MIDI into scale, use Chromatic.\n")
@@ -71,7 +81,7 @@ for i, track in enumerate(mid.tracks):
 	offset = 0
 	
 	#create text file
-	trackName = sys.argv[1] + ' - Track {} - {}'.format(i + 1, scrubName(track.name))
+	trackName = midname + ' - Track {} - {}'.format(i + 1, scrubName(track.name))
 	f = open(trackName + ".txt", "w")
 	f2 = ""
 	if(trackName.count('\\')):
