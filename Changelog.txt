@@ -1,5 +1,5 @@
 V1.3.4
-* MIDI filepaths can now be entered directly after opening the application.
+* MIDI file paths can now be entered directly as input without dragging the MIDI file or adding one as an argument.
 
 V1.3.3
 * Fixed new song part starting 1 note too late
