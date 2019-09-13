@@ -53,4 +53,4 @@ Warframe occasionally has a bug, typically after a long enough gameplay session,
 
 There is also a bug where the shawzin no longer emits audio after staying in the emote for an extended period of time. Simply exit then re-enter the emote to fix this.
 
-If your song is over 1666 notes but under 4m16s, and you wish to keep the missing time in subsequent parts as silence rather than having it be removed, you should use "-keepOffset" as a command line argument.
+If your song is over 1666 notes but under 4m16s, and you wish to keep the missing time in subsequent parts as silence rather than it be removed, you should use "-keepOffset" as a command line argument.
