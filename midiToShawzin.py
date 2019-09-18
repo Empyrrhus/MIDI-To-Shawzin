@@ -8,6 +8,7 @@ from conversion import identifyNote
 from conversion import condenser
 from conversion import offsetNote
 from conversion import scrubName
+from conversion import identifyTime
 
 maxNotes = 1666
 maxLength = 256
@@ -34,17 +35,17 @@ else:
 
 #get song scale from user
 print("\nEnter the song's musical scale.\nYou can use a tool such as scales-chords.com/scalefinder.php.\nIf you have problems getting your MIDI into scale, use Chromatic.\n")
-print("Scales:\n  1. Pentatonic Minor\n  2. Pentatonic Major\n  3. Chromatic\n  4. Hexatonic\n  5. Major\n  6. Minor\n  7. Hirajoshi\n  8. Phrygian\n\nEnter Scale:")
+print("Scales:\n  1. Pentatonic Minor\n  2. Pentatonic Major\n  3. Chromatic\n  4. Hexatonic\n  5. Major\n  6. Minor\n  7. Hirajoshi\n  8. Phrygian\n  9. Yo\n\nEnter Scale:")
 scale = 0
 while True:
 	scale = input()
 	try:
 		scale = int(scale)
-		if(0 < scale and scale <= 8):
+		if(0 < scale and scale <= 9):
 			break
 	except:
 		pass
-	print("Please enter a valid number from 1-8.")
+	print("Please enter a valid number from 1-9.")
 	
 #other settings
 playbackSpeed = 1.0
@@ -135,19 +136,27 @@ for i, track in enumerate(mid.tracks):
 			trueSecondsPast += 2*(outputNote[1])
 		f2.write("\n")	
 		
-	#print summary to console
-	print("\nOutput to " + trackName)
-	print("  Notes out of Scale: " + str(notesIgnored))
-	if(notesIgnored):
-		print("  Check \"" + trackName + " - DEBUG.txt\" for details.")
-		
 	#combine notes with shared frets
 	for counter in range(0, 3):
 		outputString = condenser(outputString)
 		
-	#output to file
+	#remove impossible notes & output to file
+	numberOfImpossibleNotes = 0
+	lastNoteTime = "AA"
 	for note in outputString:
+		if(len(note) == 3 and note[1:3] == lastNoteTime):
+			numberOfImpossibleNotes += 1
+			f2.write("(Impossible)\t Note at " + identifyTime(note) + "\n")
+			continue
+		lastNoteTime = note[1:3]
 		f.write(note)
+		
+	#print summary to console
+	print("\nOutput to " + trackName)
+	print("\tNotes out of Scale: " + str(notesIgnored))
+	print("\tImpossible Notes: " + str(numberOfImpossibleNotes))
+	if(notesIgnored or numberOfImpossibleNotes):
+		print("\tCheck \"" + trackName + " - DEBUG.txt\" for details.")
 		
 	f.close()
 	f2.close()

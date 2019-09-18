@@ -8,7 +8,46 @@ secondsPerTick = 0.0625
 base64 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "/"]
 
 #Basic note order is BCE JKM RSU hik
-scaleModulo = [36, 36, 12, 24, 24, 24, 36, 24]
+scaleModulo = [36, 36, 12, 24, 24, 24, 36, 24, 36]
+blank = {
+	0:"A", #C
+	1:"A", #C#/Db
+	2:"A", #D
+	3:"A", #D#/Eb
+	4:"A", #E
+	5:"A", #F
+	6:"A", #F#/Gb
+	7:"A", #G
+	8:"A", #G#/Ab
+	9:"A", #A
+	10:"A", #A#/Bb
+	11:"A", #B
+	12:"A", #C
+	13:"A", #C#/Db
+	14:"A", #D
+	15:"A", #D#/Eb
+	16:"A", #E
+	17:"A", #F
+	18:"A", #F#/Gb
+	19:"A", #G
+	20:"A", #G#/Ab
+	21:"A", #A
+	22:"A", #A#/Bb
+	23:"A", #B
+	24:"A", #C
+	25:"A", #C#/Db
+	26:"A", #D
+	27:"A", #D#/Eb
+	28:"A", #E
+	29:"A", #F
+	30:"A", #F#/Gb
+	31:"A", #G
+	32:"A", #G#/Ab
+	33:"A", #A
+	34:"A", #A#/Bb
+	35:"A", #B
+}
+
 pentatonicMinor = {
 	0:"B", #C
 	1:"A", #C#/Db
@@ -47,6 +86,7 @@ pentatonicMinor = {
 	34:"E", #A#/Bb
 	35:"A", #B
 }
+
 pentatonicMajor = {
 	0:"B", #C
 	1:"A", #C#/Db
@@ -248,6 +288,45 @@ phrygian = {
 	23:"A", #B
 }
 
+yo = {
+	0:"A", #C
+	1:"B", #C#/Db
+	2:"A", #D
+	3:"C", #D#/Eb
+	4:"A", #E
+	5:"A", #F
+	6:"E", #F#/Gb
+	7:"A", #G
+	8:"J", #G#/Ab
+	9:"A", #A
+	10:"K", #A#/Bb
+	11:"A", #B
+	12:"A", #C
+	13:"M", #C#/Db
+	14:"A", #D
+	15:"R", #D#/Eb
+	16:"A", #E
+	17:"A", #F
+	18:"S", #F#/Gb
+	19:"A", #G
+	20:"U", #G#/Ab
+	21:"A", #A
+	22:"h", #A#/Bb
+	23:"A", #B
+	24:"A", #C
+	25:"i", #C#/Db
+	26:"A", #D
+	27:"k", #D#/Eb
+	28:"A", #E
+	29:"A", #F
+	30:"B", #F#/Gb
+	31:"A", #G
+	32:"C", #G#/Ab
+	33:"A", #A
+	34:"E", #A#/Bb
+	35:"A", #B
+}
+
 scaleDict = {
 	1:pentatonicMinor,
 	2:pentatonicMajor,
@@ -257,6 +336,7 @@ scaleDict = {
 	6:minor,
 	7:hirajoshi,
 	8:phrygian,
+	9:yo,
 }
  
 def ShawzinConversion(scale, currentNote, secondsPast, ticksPerBeat, tempo):
@@ -531,3 +611,7 @@ def scrubName(name):
 		if(illegalCharacters.count(name[current]) == 0):
 			outputName = outputName + name[current]
 	return outputName
+	
+def identifyTime(note):
+	timestampInSeconds = (base64.index(note[1]) * secondsPerMeasure) + (base64.index(note[2]) * secondsPerTick)
+	return(str(int(timestampInSeconds/60)) + "m" + str(int(timestampInSeconds%60)) + "s")
