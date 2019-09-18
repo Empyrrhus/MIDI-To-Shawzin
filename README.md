@@ -19,7 +19,7 @@ The program will ask you to enter a scale for the MIDI file. You can find a <a h
 ```
 (Ignored)	Note #1	 Note C#/Db4 at 0m3.015625s
 ```
-Similarly, impossible fret/note combinations are ignored; check the <a href="https://www.reddit.com/r/Warframe/comments/cxbxoc/shawzin_song_recording_syntax/">notes</a> to see which note combinations are possible per scale, or make sure the each midi track plays only one note at a time.
+Similarly, impossible fret/note combinations are ignored; check the <a href="https://www.reddit.com/r/Warframe/comments/cxbxoc/shawzin_song_recording_syntax/">notes</a> to see which note combinations are possible per scale, or make sure each midi track plays only one note at a time.
 
 The program will also prompt for a playback speed. You can extend the length limit of a song by increasing the playback speed and selecting "Slow Playback" on the shawzin song menu.
 
