@@ -1,6 +1,6 @@
 V1.4
-*Updated with Warframe U25.7.6's "Yo" scale.
-*Impossible note combinations are now removed, as they can no longer be imported with the new update.
+* Updated with Warframe U25.7.6's "Yo" scale.
+* Impossible note combinations are now removed, as they can no longer be imported with the new update.
 
 V1.3.4
 * MIDI file paths can now optionally be entered directly as input without dragging the MIDI file or adding one as an argument.
