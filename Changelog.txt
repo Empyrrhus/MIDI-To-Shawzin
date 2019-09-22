@@ -1,3 +1,7 @@
+V1.4.1
+* Tracks with a "\0" null character for a name no longer cause a crash.
+* DEBUG file now prints detected tempos and ticks per beat.
+
 V1.4
 * Updated with Warframe U25.7.6's "Yo" scale.
 * Impossible note combinations are now removed, as they can no longer be imported with the new update.

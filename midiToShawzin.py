@@ -82,7 +82,13 @@ for i, track in enumerate(mid.tracks):
 	offset = 0
 	
 	#create text file
-	trackName = midname + ' - Track {} - {}'.format(i + 1, scrubName(track.name))
+	trackNameFromFile = ""
+	if(track.name == "\0"):
+		trackNameFromFile = ""
+	else:
+		trackNameFromFile = track.name
+	trackName = midname + ' - Track {} - {}'.format(i + 1, scrubName(trackNameFromFile))
+	
 	f = open(trackName + ".txt", "w")
 	f2 = ""
 	if(trackName.count('\\')):
@@ -102,9 +108,11 @@ for i, track in enumerate(mid.tracks):
 		if(str(msg).count("time_signature")):
 			timeSignature = [str(s) for s in str(msg).replace("=", " ").split(" ")]
 			ticksPerBeat = int(timeSignature[timeSignature.index("clocks_per_click") + 1]) * int(timeSignature[timeSignature.index("notated_32nd_notes_per_beat") + 1])
+			f2.write("\nTicks per Beat = " + str(ticksPerBeat))
 		if(str(msg).count("set_tempo")):
 			tempoMessage = [str(s) for s in str(msg).replace("=", " ").split(" ")]
 			tempo = int(int(tempoMessage[tempoMessage.index("tempo") + 1]) / playbackSpeed)
+			f2.write("\nTempo = " + str(tempo))
 		if(str(msg).count("time=")):
 			#break up song to fit 256s limit
 			if(notesPast >= maxNotes - 1 or secondsPast >= maxLength - 1):
