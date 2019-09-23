@@ -12,8 +12,8 @@ from conversion import identifyTime
 
 maxNotes = 1666
 maxLength = 256
-defaultTicksPerBeat = 480
-defaultTempo = 500000
+defaultTicksPerBeat = 200
+defaultTempo = 800000
 
 #read midi file from command line or input
 midname = ""
@@ -69,7 +69,7 @@ for current in sys.argv:
 
 #MIDI file attributes
 ticksPerBeat = defaultTicksPerBeat
-tempo = defaultTempo
+tempo = defaultTempo / playbackSpeed
 
 #parse each MIDI track
 for i, track in enumerate(mid.tracks):
