@@ -1,7 +1,7 @@
 import mido
 from mido import MidiFile
 
-secondsPerMeasure = 4
+secondsPerMeasure = 4.0
 secondsPerTick = 0.0625
  
 #base64 encoding
@@ -614,4 +614,4 @@ def scrubName(name):
 	
 def identifyTime(note):
 	timestampInSeconds = (base64.index(note[1]) * secondsPerMeasure) + (base64.index(note[2]) * secondsPerTick)
-	return(str(int(timestampInSeconds/60)) + "m" + str(int(timestampInSeconds%60)) + "s")
+	return(str(int(timestampInSeconds/60)) + "m" + str(float(timestampInSeconds%60)) + "s")

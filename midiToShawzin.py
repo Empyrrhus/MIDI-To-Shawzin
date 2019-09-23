@@ -137,7 +137,8 @@ for i, track in enumerate(mid.tracks):
 				else:
 					f2.write("(Ignored)\t" + "Note #" + str(trueNotesPast + 1))
 					notesIgnored += 1
-				f2.write("\t Note " + identifyNote(currentNote[1]) + str(int(currentNote[1]/12) - 1) + " at " + str(int((trueSecondsPast + 2*(outputNote[1]))/60)) + "m" + str((trueSecondsPast+ 2*(outputNote[1]))%60) + "s")
+				print(outputNote)
+				f2.write("\t Note " + identifyNote(currentNote[1]) + str(int(currentNote[1]/12) - 1) + " at " + identifyTime(outputNote[0]))
 			
 			#keep track of progress
 			secondsPast += outputNote[1]
