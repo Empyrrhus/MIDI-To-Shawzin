@@ -3,6 +3,8 @@
 MIDI-to-Shawzin is a program that converts .mid files to text, which can be imported into  Warframe's Shawzin feature.
 
 # Usage
+**Warning!** Warframe's anti-cheat is known for being oversensitive at times, consider not opening this application while Warframe is running, as per <a href="https://www.reddit.com/r/FrameHero/comments/dzgc93/psa_shawzinbot_can_get_you_banned/f87g6l8/">this post</a>.
+
 <a href="https://github.com/Empyrrhus/MIDI-To-Shawzin/releases/">Download</a> the executable, then drag a MIDI file onto "Midi to Shawzin.exe". The output files will be in the same folder as the MIDI file.
 
 <p align="center">
